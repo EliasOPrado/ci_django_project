@@ -22,5 +22,7 @@ from .settings import MEDIA_ROOT
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-
+    url(r'^$', RedirectView.as_view(url='post/')),
+    url(r'^post/$', include('post.urls')),
+    url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT})
 ]
